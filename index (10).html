@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stewart Digital — Websites That Catch Every Customer | Brandon, FL</title>
+<meta name="description" content="Professional websites and AI lead-capture for local businesses in Brandon & Tampa Bay — roofers, plumbers, HVAC, salons & more. Stop losing customers to a missed call.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f1a;
+    --bg-soft: #14172a;
+    --panel: #1b1f38;
+    --panel-line: #2c3157;
+    --ink: #f4f5fb;
+    --muted: #a4a8c9;
+    --dim: #6f7498;
+    --mint: #4fe3b0;
+    --mint-deep: #2bc594;
+    --violet: #8b7dff;
+    --amber: #ffc25a;
+    --white: #ffffff;
+    --glow: rgba(79, 227, 176, 0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Sora', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  h1, h2, h3 { font-family: 'Fraunces', serif; line-height: 1.08; font-weight: 600; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 26px; }
+
+  /* demo / placeholder banner */
+  .heads-up {
+    background: var(--amber);
+    color: #221b00;
+    text-align: center;
+    font-size: 0.84rem;
+    font-weight: 600;
+    padding: 9px 16px;
+  }
+
+  /* ---------- NAV ---------- */
+  header {
+    position: sticky; top: 0; z-index: 60;
+    background: rgba(13, 15, 26, 0.82);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--panel-line);
+  }
+  header .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 26px;
+  }
+  .brand { display: flex; align-items: center; gap: 11px; }
+  .brand-mark {
+    width: 40px; height: 40px;
+    background: linear-gradient(135deg, var(--mint), var(--violet));
+    border-radius: 11px;
+    display: grid; place-items: center;
+    box-shadow: 0 0 24px var(--glow);
+  }
+  .brand-mark svg { width: 22px; height: 22px; fill: var(--bg); }
+  .brand strong { font-family: 'Sora'; font-size: 1.08rem; font-weight: 700; letter-spacing: -0.01em; }
+  .brand span { display: block; font-size: 0.68rem; color: var(--dim); letter-spacing: 0.14em; text-transform: uppercase; margin-top: -2px; }
+  nav.links { display: flex; gap: 32px; }
+  nav.links a { font-size: 0.92rem; color: var(--muted); transition: color 0.16s; }
+  nav.links a:hover { color: var(--mint); }
+  .nav-right { display: flex; align-items: center; gap: 18px; }
+
+  .btn {
+    font-family: 'Sora'; font-weight: 600; font-size: 0.94rem;
+    padding: 12px 24px; border-radius: 10px; cursor: pointer;
+    border: none; display: inline-block;
+    transition: transform 0.14s, box-shadow 0.18s, background 0.18s;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--mint), var(--mint-deep));
+    color: #06231a;
+    box-shadow: 0 6px 24px var(--glow);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 32px var(--glow); }
+  .btn-outline {
+    background: transparent; color: var(--ink);
+    border: 1px solid var(--panel-line);
+  }
+  .btn-outline:hover { border-color: var(--mint); color: var(--mint); }
+  .btn-big { padding: 16px 34px; font-size: 1.04rem; }
+  .menu-toggle { display: none; background: none; border: none; cursor: pointer; }
+  .menu-toggle svg { width: 28px; height: 28px; fill: var(--ink); }
+
+  /* ---------- HERO ---------- */
+  .hero { position: relative; padding: 110px 0 100px; }
+  .hero::before {
+    content: ""; position: absolute; top: -120px; left: 50%;
+    transform: translateX(-50%);
+    width: 900px; height: 600px;
+    background: radial-gradient(ellipse, rgba(139,125,255,0.18), transparent 65%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: ""; position: absolute; top: 80px; right: -100px;
+    width: 480px; height: 480px;
+    background: radial-gradient(circle, var(--glow), transparent 68%);
+    pointer-events: none;
+  }
+  .hero .wrap { position: relative; z-index: 2; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 60px; align-items: center; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--panel); border: 1px solid var(--panel-line);
+    border-radius: 100px; padding: 7px 15px;
+    font-size: 0.82rem; color: var(--muted); margin-bottom: 26px;
+  }
+  .pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 10px var(--mint); }
+  .hero h1 { font-size: 3.7rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 22px; }
+  .hero h1 .grad {
+    background: linear-gradient(115deg, var(--mint), var(--violet));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-style: italic;
+  }
+  .hero p.lead { font-size: 1.16rem; color: var(--muted); margin-bottom: 32px; max-width: 40ch; }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 34px; }
+  .hero-meta { display: flex; gap: 28px; flex-wrap: wrap; }
+  .hero-meta div strong { font-family: 'Fraunces'; font-size: 1.5rem; display: block; }
+  .hero-meta div span { font-size: 0.82rem; color: var(--dim); }
+
+  /* hero visual: a "missed call → captured" mock */
+  .hero-visual {
+    background: var(--panel); border: 1px solid var(--panel-line);
+    border-radius: 20px; padding: 26px;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.45);
+    position: relative;
+  }
+  .hero-visual .hv-label { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--dim); margin-bottom: 16px; }
+  .hv-row {
+    display: flex; align-items: center; gap: 13px;
+    padding: 14px; border-radius: 12px;
+    background: var(--bg-soft); margin-bottom: 11px;
+    border: 1px solid transparent;
+  }
+  .hv-row.lost { opacity: 0.55; }
+  .hv-row.won { border-color: rgba(79,227,176,0.4); background: rgba(79,227,176,0.07); }
+  .hv-ic {
+    width: 38px; height: 38px; border-radius: 9px; flex-shrink: 0;
+    display: grid; place-items: center;
+  }
+  .hv-ic.red { background: rgba(255,107,107,0.16); }
+  .hv-ic.red svg { fill: #ff6b6b; }
+  .hv-ic.green { background: rgba(79,227,176,0.16); }
+  .hv-ic.green svg { fill: var(--mint); }
+  .hv-ic svg { width: 19px; height: 19px; }
+  .hv-row strong { font-size: 0.93rem; font-family: 'Sora'; font-weight: 600; }
+  .hv-row p { font-size: 0.8rem; color: var(--dim); }
+  .hv-tag { margin-left: auto; font-size: 0.72rem; font-weight: 600; padding: 4px 9px; border-radius: 6px; }
+  .hv-tag.red { background: rgba(255,107,107,0.16); color: #ff6b6b; }
+  .hv-tag.green { background: rgba(79,227,176,0.16); color: var(--mint); }
+
+  /* ---------- SECTION SHELL ---------- */
+  section { padding: 90px 0; position: relative; }
+  .sec-head { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+  .eyebrow {
+    font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.18em;
+    color: var(--mint); font-weight: 600; margin-bottom: 14px;
+  }
+  .sec-head h2 { font-size: 2.6rem; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 14px; }
+  .sec-head p { color: var(--muted); font-size: 1.06rem; }
+
+  /* ---------- PROBLEM STRIP ---------- */
+  .problem { background: var(--bg-soft); border-block: 1px solid var(--panel-line); }
+  .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .problem-card { text-align: center; padding: 16px; }
+  .problem-card .big {
+    font-family: 'Fraunces'; font-size: 3rem; font-weight: 700;
+    background: linear-gradient(135deg, var(--amber), #ff8f6b);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .problem-card p { color: var(--muted); font-size: 0.98rem; margin-top: 4px; }
+
+  /* ---------- SERVICES ---------- */
+  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .svc {
+    background: var(--panel); border: 1px solid var(--panel-line);
+    border-radius: 16px; padding: 30px 26px;
+    transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
+  }
+  .svc:hover { transform: translateY(-5px); border-color: var(--mint); box-shadow: 0 18px 44px rgba(0,0,0,0.4); }
+  .svc-ic {
+    width: 52px; height: 52px; border-radius: 13px;
+    background: linear-gradient(135deg, rgba(79,227,176,0.18), rgba(139,125,255,0.18));
+    display: grid; place-items: center; margin-bottom: 18px;
+  }
+  .svc-ic svg { width: 26px; height: 26px; fill: var(--mint); }
+  .svc h3 { font-size: 1.35rem; margin-bottom: 9px; }
+  .svc p { color: var(--muted); font-size: 0.96rem; }
+  .svc.featured { border-color: var(--violet); background: linear-gradient(170deg, var(--panel), #221f3f); }
+  .svc.featured .svc-ic { background: linear-gradient(135deg, var(--violet), var(--mint)); }
+  .svc.featured .svc-ic svg { fill: var(--white); }
+  .svc .flag {
+    display: inline-block; font-size: 0.7rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--violet); margin-bottom: 8px;
+  }
+
+  /* ---------- WHO I HELP ---------- */
+  .who { background: var(--bg-soft); border-block: 1px solid var(--panel-line); }
+  .who-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+  .who-chip {
+    background: var(--panel); border: 1px solid var(--panel-line);
+    border-radius: 13px; padding: 22px 12px; text-align: center;
+    transition: transform 0.16s, border-color 0.16s;
+  }
+  .who-chip:hover { transform: translateY(-4px); border-color: var(--mint); }
+  .who-chip svg { width: 30px; height: 30px; fill: var(--mint); margin-bottom: 9px; }
+  .who-chip span { display: block; font-size: 0.88rem; font-weight: 500; }
+  .who-note { text-align: center; color: var(--dim); font-size: 0.92rem; margin-top: 24px; }
+
+  /* ---------- PROCESS ---------- */
+  .proc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .proc { position: relative; padding-top: 14px; }
+  .proc .pn {
+    font-family: 'Fraunces'; font-size: 2.6rem; font-weight: 700;
+    color: var(--panel-line); line-height: 1; margin-bottom: 6px;
+  }
+  .proc h3 { font-size: 1.3rem; margin-bottom: 8px; }
+  .proc p { color: var(--muted); font-size: 0.96rem; }
+
+  /* ---------- PRICING ---------- */
+  .pricing { background: var(--bg-soft); border-block: 1px solid var(--panel-line); }
+  .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
+  .price {
+    background: var(--panel); border: 1px solid var(--panel-line);
+    border-radius: 18px; padding: 34px 30px; display: flex; flex-direction: column;
+  }
+  .price.spotlight {
+    border-color: var(--mint);
+    box-shadow: 0 0 0 1px var(--mint), 0 24px 60px rgba(79,227,176,0.14);
+    position: relative;
+  }
+  .price.spotlight::before {
+    content: "Most Popular"; position: absolute; top: -13px; left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--mint), var(--mint-deep));
+    color: #06231a; font-size: 0.74rem; font-weight: 700;
+    padding: 5px 16px; border-radius: 100px;
+  }
+  .price h3 { font-size: 1.4rem; margin-bottom: 4px; }
+  .price .tier-sub { color: var(--dim); font-size: 0.88rem; margin-bottom: 18px; }
+  .price .amount { font-family: 'Fraunces'; font-size: 2.6rem; font-weight: 700; line-height: 1; }
+  .price .amount small { font-size: 0.9rem; color: var(--dim); font-family: 'Sora'; font-weight: 400; }
+  .price .amount .from { font-size: 0.82rem; color: var(--mint); display: block; font-family: 'Sora'; margin-bottom: 2px; }
+  .price ul { list-style: none; margin: 22px 0 26px; flex-grow: 1; }
+  .price li { font-size: 0.93rem; color: var(--muted); padding: 7px 0 7px 26px; position: relative; }
+  .price li::before {
+    content: ""; position: absolute; left: 0; top: 13px;
+    width: 14px; height: 8px; border-left: 2px solid var(--mint);
+    border-bottom: 2px solid var(--mint); transform: rotate(-45deg);
+  }
+  .price .btn { width: 100%; text-align: center; }
+  .price-note { text-align: center; color: var(--dim); font-size: 0.9rem; margin-top: 26px; }
+
+  /* ---------- PORTFOLIO ---------- */
+  .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .work {
+    background: var(--panel); border: 1px solid var(--panel-line);
+    border-radius: 16px; overflow: hidden;
+    transition: transform 0.18s, border-color 0.18s;
+  }
+  .work:hover { transform: translateY(-5px); border-color: var(--mint); }
+  .work-thumb {
+    height: 190px; position: relative;
+    display: flex; align-items: flex-end; padding: 20px;
+  }
+  .work-thumb.roofing {
+    background:
+      linear-gradient(rgba(13,15,26,0.15), rgba(13,15,26,0.85)),
+      repeating-linear-gradient(135deg, #c0492b 0 26px, #9c3a22 26px 52px);
+  }
+  .work-thumb.placeholder {
+    background:
+      linear-gradient(rgba(13,15,26,0.15), rgba(13,15,26,0.85)),
+      repeating-linear-gradient(135deg, #2c3157 0 26px, #232744 26px 52px);
+  }
+  .work-thumb .live-tag {
+    background: var(--mint); color: #06231a;
+    font-size: 0.72rem; font-weight: 700; padding: 4px 10px; border-radius: 6px;
+  }
+  .work-thumb .soon-tag {
+    background: var(--panel-line); color: var(--muted);
+    font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 6px;
+  }
+  .work-body { padding: 22px 24px; }
+  .work-body .cat { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--mint); margin-bottom: 6px; }
+  .work-body h3 { font-size: 1.3rem; margin-bottom: 6px; }
+  .work-body p { color: var(--muted); font-size: 0.92rem; }
+  .work-body .view { color: var(--mint); font-size: 0.88rem; font-weight: 600; margin-top: 12px; display: inline-block; }
+
+  /* ---------- CONTACT ---------- */
+  .contact .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .contact h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 16px; }
+  .contact p.big { color: var(--muted); font-size: 1.08rem; margin-bottom: 26px; }
+  .contact-list { list-style: none; }
+  .contact-list li { display: flex; align-items: center; gap: 13px; margin-bottom: 14px; }
+  .contact-list .ci {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: var(--panel); border: 1px solid var(--panel-line);
+    display: grid; place-items: center;
+  }
+  .contact-list .ci svg { width: 18px; height: 18px; fill: var(--mint); }
+  .contact-list strong { display: block; font-size: 0.96rem; }
+  .contact-list span { font-size: 0.84rem; color: var(--dim); }
+  .contact-form {
+    background: var(--panel); border: 1px solid var(--panel-line);
+    border-radius: 18px; padding: 32px;
+  }
+  .cf-field { margin-bottom: 15px; }
+  .cf-field label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 6px; }
+  .cf-field input, .cf-field select, .cf-field textarea {
+    width: 100%; padding: 12px 14px; border-radius: 10px;
+    background: var(--bg-soft); border: 1px solid var(--panel-line);
+    color: var(--ink); font-family: 'Sora'; font-size: 0.94rem;
+  }
+  .cf-field input:focus, .cf-field select:focus, .cf-field textarea:focus {
+    outline: 2px solid var(--mint); outline-offset: -1px;
+  }
+  .cf-field textarea { resize: vertical; min-height: 80px; }
+  .contact-form .btn { width: 100%; }
+  .cf-note { text-align: center; font-size: 0.8rem; color: var(--dim); margin-top: 12px; }
+
+  /* ---------- FOOTER ---------- */
+  footer { background: var(--bg-soft); border-top: 1px solid var(--panel-line); padding: 50px 0 30px; }
+  .foot-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 28px; padding-bottom: 32px; border-bottom: 1px solid var(--panel-line); }
+  .foot-links { display: flex; gap: 30px; flex-wrap: wrap; }
+  .foot-links a { font-size: 0.9rem; color: var(--muted); }
+  .foot-links a:hover { color: var(--mint); }
+  .foot-bottom { padding-top: 22px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: 0.82rem; color: var(--dim); }
+
+  /* reveal */
+  .reveal { opacity: 0; transform: translateY(26px); }
+
+  @media (max-width: 920px) {
+    nav.links { display: none; }
+    .menu-toggle { display: block; }
+    .nav-right .btn { display: none; }
+    .hero .wrap, .contact .wrap { grid-template-columns: 1fr; gap: 44px; }
+    .hero { padding: 70px 0; }
+    .hero h1 { font-size: 2.9rem; }
+    .svc-grid, .proc-grid, .price-grid, .problem-grid { grid-template-columns: 1fr; }
+    .who-grid { grid-template-columns: repeat(3, 1fr); }
+    .work-grid { grid-template-columns: 1fr; }
+    .price.spotlight { transform: none; }
+  }
+  @media (max-width: 520px) {
+    .hero h1 { font-size: 2.3rem; }
+    .sec-head h2 { font-size: 2rem; }
+    .who-grid { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 64px 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="heads-up">
+  ALMOST READY — add your real <strong>phone &amp; email</strong> and wire up the contact form before going fully live.
+</div>
+
+<!-- NAV -->
+<header>
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16v3H4V4Zm0 6h10v3H4v-3Zm0 6h16v3H4v-3Zm12-6h4v3h-4v-3Z"/></svg>
+      </div>
+      <div>
+        <strong>Stewart Digital</strong>
+        <span>Web &amp; Lead Capture</span>
+      </div>
+    </a>
+    <nav class="links">
+      <a href="#services">Services</a>
+      <a href="#who">Who I Help</a>
+      <a href="#process">Process</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#work">Work</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#contact" class="btn btn-primary">Get a Free Audit</a>
+      <button class="menu-toggle" aria-label="Menu">
+        <svg viewBox="0 0 24 24"><path d="M3 6h18v2H3V6Zm0 5h18v2H3v-2Zm0 5h18v2H3v-2Z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <div class="pill"><span class="dot"></span> Serving Brandon &amp; Tampa Bay small businesses</div>
+      <h1>Never Lose Another Customer To A <span class="grad">Missed Call.</span></h1>
+      <p class="lead">I build fast, professional websites — plus AI lead-capture that answers when you can't — for local businesses that are tired of leads slipping away.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary btn-big">Get My Free Website Audit</a>
+        <a href="#work" class="btn btn-outline btn-big">See My Work</a>
+      </div>
+      <div class="hero-meta">
+        <div><strong>48 hr</strong><span>Typical first draft</span></div>
+        <div><strong>Local</strong><span>Brandon-based, real person</span></div>
+        <div><strong>$0</strong><span>Audit &amp; mockup to start</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hv-label">A customer tries to reach you…</div>
+      <div class="hv-row lost">
+        <div class="hv-ic red">
+          <svg viewBox="0 0 24 24"><path d="M21 15.5c-1.2 0-2.4-.2-3.6-.6-.3-.1-.7 0-1 .2l-2.2 2.2c-2.8-1.4-5.2-3.8-6.6-6.6l2.2-2.2c.3-.3.4-.6.2-1C9.2 8.4 9 7.2 9 6c0-.5-.4-1-1-1H4.5C4 5 3.5 5.4 3.5 6 3.5 15.6 11.4 23.5 21 23.5c.6 0 1-.5 1-1V18c0-.6-.5-1-1-1Z"/><path d="m2 2 20 20" stroke="#ff6b6b" stroke-width="2"/></svg>
+        </div>
+        <div>
+          <strong>Old way: Facebook page</strong>
+          <p>Call goes to voicemail. They call the next guy.</p>
+        </div>
+        <span class="hv-tag red">Lead lost</span>
+      </div>
+      <div class="hv-row won">
+        <div class="hv-ic green">
+          <svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5 1.4-1.4L9 14.2 18.6 4.6 20 6Z"/></svg>
+        </div>
+        <div>
+          <strong>With a real site + AI capture</strong>
+          <p>Lead captured 24/7, texted straight to your phone.</p>
+        </div>
+        <span class="hv-tag green">Lead won</span>
+      </div>
+      <div class="hv-row won">
+        <div class="hv-ic green">
+          <svg viewBox="0 0 24 24"><path d="M2 5h20v14H2V5Zm2 2v10h16V7H4Zm2 2h8v2H6V9Zm0 4h12v2H6v-2Z"/></svg>
+        </div>
+        <div>
+          <strong>You follow up that evening</strong>
+          <p>Job booked — instead of lost to a competitor.</p>
+        </div>
+        <span class="hv-tag green">Job booked</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM STRIP -->
+<section class="problem">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">The Quiet Leak</div>
+      <h2>Most Local Businesses Are Losing Customers And Don't Even Know It</h2>
+      <p>Not because the work isn't good — because the calls and clicks never reach you.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="big">62%</div>
+        <p>of calls to small businesses go unanswered during a busy work day.</p>
+      </div>
+      <div class="problem-card">
+        <div class="big">8 / 10</div>
+        <p>customers won't leave a voicemail — they just call your competitor instead.</p>
+      </div>
+      <div class="problem-card">
+        <div class="big">1st</div>
+        <p>business to respond wins the job most of the time. Speed beats almost everything.</p>
+      </div>
+    </div>
+    <p class="price-note">Figures are illustrative industry estimates — swap in sourced stats before going live.</p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">What I Do</div>
+      <h2>Everything You Need To Catch Every Lead</h2>
+      <p>One local person handling your whole web presence — no agency runaround.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc">
+        <div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M3 4h18v16H3V4Zm2 2v3h14V6H5Zm0 5v7h14v-7H5Z"/></svg></div>
+        <h3>Professional Websites</h3>
+        <p>Fast, mobile-first sites that load instantly and turn visitors into phone calls. Built to actually rank and convert — not just look nice.</p>
+      </div>
+      <div class="svc featured">
+        <span class="flag">★ The Difference Maker</span>
+        <div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7v3l-2 4h18l-2-4V9a7 7 0 0 0-7-7Zm0 20a3 3 0 0 0 3-3H9a3 3 0 0 0 3 3Z"/></svg></div>
+        <h3>AI Lead-Capture Bot</h3>
+        <p>An assistant that answers questions on your site 24/7, captures the lead's name and number, and texts it straight to your phone — so a missed call is never a lost job.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5.5 3.8 10.7 8 12 4.2-1.3 8-6.5 8-12V5l-8-3Zm-1 13-3-3 1.4-1.4L11 12.2l4.6-4.6L17 9l-6 6Z"/></svg></div>
+        <h3>Local Search Setup</h3>
+        <p>Google Business Profile, maps, and the basics that get you found when someone searches "[your trade] near me" at the moment they need you.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4V4Zm2 2v12h12V6H6Zm2 2h8v2H8V8Zm0 4h8v2H8v-2Zm0 4h5v2H8v-2Z"/></svg></div>
+        <h3>Quote &amp; Contact Forms</h3>
+        <p>Smart forms that route every inquiry to your email and phone instantly, with the details you need to call back ready to win the job.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 5v6l5 3-.8 1.7L11 14V7h2Z"/></svg></div>
+        <h3>Care &amp; Updates</h3>
+        <p>Hosting, security, and edits handled for a flat monthly rate. Your site stays fast, current, and online — you never touch a thing.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-ic"><svg viewBox="0 0 24 24"><path d="M3 13h2v8H3v-8Zm4-6h2v14H7V7Zm4-4h2v18h-2V3Zm4 8h2v10h-2V11Zm4-4h2v14h-2V7Z"/></svg></div>
+        <h3>Simple Reporting</h3>
+        <p>A plain-English monthly note: how many people visited, how many reached out. No dashboards to learn — just what's working.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO I HELP -->
+<section class="who" id="who">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Who I Help</div>
+      <h2>Built For Local, Hands-On Businesses</h2>
+      <p>If your best customers find you by phone and Google — this is for you.</p>
+    </div>
+    <div class="who-grid">
+      <div class="who-chip">
+        <svg viewBox="0 0 24 24"><path d="M12 3 2 11h3v9h6v-6h2v6h6v-9h3L12 3Z"/></svg>
+        <span>Roofers</span>
+      </div>
+      <div class="who-chip">
+        <svg viewBox="0 0 24 24"><path d="M14 2v6h2a4 4 0 0 1 4 4v2h-2v-2a2 2 0 0 0-2-2h-2v10h-2V8h-2a2 2 0 0 0-2 2v8H4v-8a4 4 0 0 1 4-4h2V2h4Z"/></svg>
+        <span>Plumbers</span>
+      </div>
+      <div class="who-chip">
+        <svg viewBox="0 0 24 24"><path d="M5 3h14v4H5V3Zm0 6h14v3a5 5 0 0 1-4 4.9V21H9v-4.1A5 5 0 0 1 5 12V9Z"/></svg>
+        <span>HVAC</span>
+      </div>
+      <div class="who-chip">
+        <svg viewBox="0 0 24 24"><path d="M7 2c2 0 3 2 3 5s-1 7-3 7-3-4-3-7 1-5 3-5Zm10 0c2 0 3 2 3 5s-1 7-3 7-3-4-3-7 1-5 3-5ZM6 16h2v6H6v-6Zm10 0h2v6h-2v-6Z"/></svg>
+        <span>Salons &amp; Spas</span>
+      </div>
+      <div class="who-chip">
+        <svg viewBox="0 0 24 24"><path d="M3 18 12 3l9 15H3Zm9-11-5 9h10l-5-9Z"/></svg>
+        <span>Landscapers</span>
+      </div>
+      <div class="who-chip">
+        <svg viewBox="0 0 24 24"><path d="M4 5h16v3H4V5Zm0 5h16v9H4v-9Zm3 2v5h4v-5H7Z"/></svg>
+        <span>Contractors</span>
+      </div>
+      <div class="who-chip">
+        <svg viewBox="0 0 24 24"><path d="M5 3h14v18l-7-3-7 3V3Z"/></svg>
+        <span>Cleaners</span>
+      </div>
+      <div class="who-chip">
+        <svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 0 1 5 5v3h2v12H5V10h2V7a5 5 0 0 1 5-5Zm-3 8h6V7a3 3 0 0 0-6 0v3Z"/></svg>
+        <span>Auto Shops</span>
+      </div>
+      <div class="who-chip">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16v12H5.2L4 17.2V4Zm4 3v2h8V7H8Zm0 4v2h5v-2H8Z"/></svg>
+        <span>Pet Services</span>
+      </div>
+      <div class="who-chip">
+        <svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5Zm0 7L2 4v0m10 5 8-4M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>
+        <span>Electricians</span>
+      </div>
+      <div class="who-chip">
+        <svg viewBox="0 0 24 24"><path d="M3 11 12 2l9 9h-2v9H5v-9H3Zm6 7h6v-5H9v5Z"/></svg>
+        <span>Painters</span>
+      </div>
+      <div class="who-chip">
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 11h-2V7h2v6Zm0 4h-2v-2h2v2Z"/></svg>
+        <span>&amp; more</span>
+      </div>
+    </div>
+    <p class="who-note">Not on the list? If you're a local business losing leads, the fix is the same. Let's talk.</p>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">How It Works</div>
+      <h2>Simple, Start To Finish</h2>
+      <p>No tech jargon, no long meetings. Here's the whole thing.</p>
+    </div>
+    <div class="proc-grid">
+      <div class="proc">
+        <div class="pn">01</div>
+        <h3>Free Audit</h3>
+        <p>I look at your current setup and show you exactly where leads are slipping through — then build a free mockup so you can see the fix, not just hear about it.</p>
+      </div>
+      <div class="proc">
+        <div class="pn">02</div>
+        <h3>Build &amp; Launch</h3>
+        <p>You approve the direction, I build it — usually a first draft within 48 hours. Site, forms, AI capture, local search. You review, I refine, we launch.</p>
+      </div>
+      <div class="proc">
+        <div class="pn">03</div>
+        <h3>I Keep It Running</h3>
+        <p>Hosting, updates, and edits handled monthly. You focus on the work; I make sure every lead reaches you. Cancel anytime.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Pricing</div>
+      <h2>Straightforward, Local Pricing</h2>
+      <p>No agency markup. Every project starts with a free audit and mockup.</p>
+    </div>
+    <div class="price-grid">
+      <div class="price">
+        <h3>Starter Site</h3>
+        <p class="tier-sub">Get online and look credible — fast.</p>
+        <div class="amount"><span class="from">starting at</span>$750 <small>one-time</small></div>
+        <ul>
+          <li>Professional mobile-first website</li>
+          <li>Up to 5 pages</li>
+          <li>Click-to-call &amp; contact form</li>
+          <li>Google Business Profile setup</li>
+          <li>Launched in about a week</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline">Start Here</a>
+      </div>
+      <div class="price spotlight">
+        <h3>Lead-Capture Site</h3>
+        <p class="tier-sub">The one that stops the leak.</p>
+        <div class="amount"><span class="from">starting at</span>$1,200 <small>+ monthly</small></div>
+        <ul>
+          <li>Everything in Starter Site</li>
+          <li>AI lead-capture bot, 24/7</li>
+          <li>Leads texted straight to your phone</li>
+          <li>Smart quote forms</li>
+          <li>Hosting &amp; updates included</li>
+          <li>Plain-English monthly report</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Get a Free Audit</a>
+      </div>
+      <div class="price">
+        <h3>Care Plan</h3>
+        <p class="tier-sub">For sites already built — keep it sharp.</p>
+        <div class="amount"><span class="from">starting at</span>$75 <small>/ month</small></div>
+        <ul>
+          <li>Hosting &amp; security</li>
+          <li>Unlimited small edits</li>
+          <li>AI bot tuning &amp; monitoring</li>
+          <li>Monthly performance note</li>
+          <li>Priority support, cancel anytime</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline">Add Care Plan</a>
+      </div>
+    </div>
+    <p class="price-note">Every price is a starting point — your free audit comes with an exact, no-surprise quote.</p>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Recent Work</div>
+      <h2>See It For Yourself</h2>
+      <p>Real, working examples — not stock screenshots.</p>
+    </div>
+    <div class="work-grid">
+      <div class="work">
+        <div class="work-thumb roofing"><span class="live-tag">● Live Demo</span></div>
+        <div class="work-body">
+          <div class="cat">Roofing Contractor</div>
+          <h3>Brandon Roofing Co</h3>
+          <p>A full conversion-focused site for a roofing company — phone-first design, lead form in the hero, trust signals throughout. Built as a working sample.</p>
+          <a href="https://adrianstewart-wrestling.github.io/roofing-demo-site/" target="_blank" rel="noopener" class="view">View live demo →</a>
+        </div>
+      </div>
+      <div class="work">
+        <div class="work-thumb placeholder"><span class="soon-tag">Your Business Here</span></div>
+        <div class="work-body">
+          <div class="cat">Next Project</div>
+          <h3>Could Be Yours</h3>
+          <p>I'm taking on a few founding local clients at starter pricing in exchange for a review and a portfolio spot. Early clients get the best rate I'll ever offer.</p>
+          <a href="#contact" class="view">Claim a founding spot →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Get Started</div>
+      <h2>Free Website Audit — No Strings</h2>
+      <p class="big">Tell me about your business and I'll send back an honest look at where you're losing leads, plus a free mockup of the fix. If you like it, we talk. If not, no hard feelings.</p>
+      <ul class="contact-list">
+        <li>
+          <div class="ci"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .7-.2 1l-2.3 2.2Z"/></svg></div>
+          <div><strong>(813) 555-0000</strong><span>Call or text — replace with your number</span></div>
+        </li>
+        <li>
+          <div class="ci"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4V4Zm8 7 8-5H4l8 5Zm0 2L4 8v10h16V8l-8 5Z"/></svg></div>
+          <div><strong>hello@[yourdomain].com</strong><span>Replace with your email</span></div>
+        </li>
+        <li>
+          <div class="ci"><svg viewBox="0 0 24 24"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg></div>
+          <div><strong>Brandon, FL</strong><span>Serving the greater Tampa Bay area</span></div>
+        </li>
+      </ul>
+    </div>
+    <div class="contact-form">
+      <div class="cf-field">
+        <label for="cf-name">Your Name</label>
+        <input type="text" id="cf-name" placeholder="Jane Owner">
+      </div>
+      <div class="cf-field">
+        <label for="cf-biz">Business Name &amp; Type</label>
+        <input type="text" id="cf-biz" placeholder="Jane's Plumbing — plumber">
+      </div>
+      <div class="cf-field">
+        <label for="cf-contact">Phone or Email</label>
+        <input type="text" id="cf-contact" placeholder="Best way to reach you">
+      </div>
+      <div class="cf-field">
+        <label for="cf-need">What do you need?</label>
+        <select id="cf-need">
+          <option>I have no website</option>
+          <option>My website is outdated</option>
+          <option>I only have a Facebook page</option>
+          <option>I have a site but get no leads from it</option>
+          <option>I want the AI lead-capture bot</option>
+          <option>Not sure — I just want the free audit</option>
+        </select>
+      </div>
+      <div class="cf-field">
+        <label for="cf-msg">Anything else? (optional)</label>
+        <textarea id="cf-msg" placeholder="Tell me a bit about your business..."></textarea>
+      </div>
+      <button class="btn btn-primary" onclick="auditSubmit()">Send My Free Audit Request</button>
+      <p class="cf-note">I reply to every request personally, usually within one business day.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <a href="#top" class="brand">
+        <div class="brand-mark">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16v3H4V4Zm0 6h10v3H4v-3Zm0 6h16v3H4v-3Zm12-6h4v3h-4v-3Z"/></svg>
+        </div>
+        <div>
+          <strong>Stewart Digital</strong>
+          <span>Web &amp; Lead Capture</span>
+        </div>
+      </a>
+      <div class="foot-links">
+        <a href="#services">Services</a>
+        <a href="#who">Who I Help</a>
+        <a href="#process">Process</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Free Audit</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Stewart Digital — Web &amp; Lead Capture · Brandon, FL</span>
+      <span>Helping local businesses catch every customer.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelector('.menu-toggle').addEventListener('click', function () {
+    document.querySelector('#services').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  function auditSubmit() {
+    alert("Thanks! This is a placeholder site — the form isn't connected yet.\n\nBefore you go live, wire this to Formspree, Netlify Forms, or an email/SMS handoff so audit requests reach you instantly.");
+  }
+
+  // staggered reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.style.transition = 'opacity .6s ease, transform .6s ease';
+        e.target.style.opacity = 1;
+        e.target.style.transform = 'translateY(0)';
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.svc, .proc, .price, .work, .problem-card, .who-chip').forEach((el) => {
+    el.classList.add('reveal');
+    io.observe(el);
+  });
+</script>
+
+</body>
+</html>
