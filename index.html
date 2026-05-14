@@ -708,11 +708,11 @@
       <ul class="contact-list">
         <li>
           <div class="ci"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .7-.2 1l-2.3 2.2Z"/></svg></div>
-          <div><strong>(717)433-0381</strong><span>Call or text</span></div>
+          <div><strong>(813) 555-0000</strong><span>Call or text — replace with your number</span></div>
         </li>
         <li>
           <div class="ci"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4V4Zm8 7 8-5H4l8 5Zm0 2L4 8v10h16V8l-8 5Z"/></svg></div>
-          <div><strong>AStewart8693@gmail.com</strong><span></span></div>
+          <div><strong>hello@[yourdomain].com</strong><span>Replace with your email</span></div>
         </li>
         <li>
           <div class="ci"><svg viewBox="0 0 24 24"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg></div>
@@ -721,6 +721,7 @@
       </ul>
     </div>
     <div class="contact-form">
+      <div id="audit-form">
       <div class="cf-field">
         <label for="cf-name">Your Name</label>
         <input type="text" id="cf-name" placeholder="Jane Owner">
@@ -748,8 +749,10 @@
         <label for="cf-msg">Anything else? (optional)</label>
         <textarea id="cf-msg" placeholder="Tell me a bit about your business..."></textarea>
       </div>
-      <button class="btn btn-primary" onclick="auditSubmit()">Send My Free Audit Request</button>
+      <button class="btn btn-primary" id="cf-submit" onclick="auditSubmit()">Send My Free Audit Request</button>
       <p class="cf-note">I reply to every request personally, usually within one business day.</p>
+      </div>
+      <p id="cf-status" style="display:none;text-align:center;padding:14px 0;font-size:0.96rem;"></p>
     </div>
   </div>
 </section>
@@ -788,8 +791,84 @@
     document.querySelector('#services').scrollIntoView({ behavior: 'smooth' });
   });
 
+  // ── Audit form submission ──────────────────────────────────────────────
+  //
+  // SETUP: To receive submissions in your inbox without the visitor leaving
+  // the page, create a free form at https://formspree.io (point it at
+  // AStewart8693@gmail.com), then paste the form ID below.
+  //
+  // Until you do that, the form falls back to opening the visitor's email
+  // app addressed to you — it still works, just less smoothly.
+  //
+  const FORMSPREE_ID = "xykoqkyd";       // <-- live Formspree form ID
+  const CONTACT_EMAIL = "AStewart8693@gmail.com";
+
   function auditSubmit() {
-    alert("Thanks! This is a placeholder site — the form isn't connected yet.\n\nBefore you go live, wire this to Formspree, Netlify Forms, or an email/SMS handoff so audit requests reach you instantly.");
+    var name    = document.getElementById('cf-name').value.trim();
+    var biz     = document.getElementById('cf-biz').value.trim();
+    var contact = document.getElementById('cf-contact').value.trim();
+    var need    = document.getElementById('cf-need').value;
+    var msg     = document.getElementById('cf-msg').value.trim();
+    var status  = document.getElementById('cf-status');
+    var btn     = document.getElementById('cf-submit');
+
+    if (!name || !contact) {
+      status.style.display = 'block';
+      status.style.color = '#ff6b6b';
+      status.textContent = 'Please add at least your name and a phone or email.';
+      return;
+    }
+
+    // Path A — Formspree (preferred): submits in the background, no page leave.
+    if (FORMSPREE_ID) {
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: (function () {
+          var fd = new FormData();
+          fd.append('Name', name);
+          fd.append('Business', biz);
+          fd.append('Contact', contact);
+          fd.append('Need', need);
+          fd.append('Message', msg);
+          fd.append('_subject', 'New free-audit request — ' + (biz || name));
+          return fd;
+        })()
+      })
+      .then(function (r) {
+        if (r.ok) {
+          document.getElementById('audit-form').style.display = 'none';
+          status.style.display = 'block';
+          status.style.color = 'var(--mint)';
+          status.textContent = 'Thanks ' + name + " — your audit request is in. I'll be in touch within one business day.";
+        } else {
+          throw new Error('bad response');
+        }
+      })
+      .catch(function () {
+        btn.disabled = false;
+        btn.textContent = 'Send My Free Audit Request';
+        status.style.display = 'block';
+        status.style.color = '#ff6b6b';
+        status.textContent = 'Something went wrong sending that. Please email me directly at ' + CONTACT_EMAIL + '.';
+      });
+      return;
+    }
+
+    // Path B — mailto fallback (works with zero setup): opens their email app.
+    var body = 'Name: ' + name +
+               '\nBusiness: ' + biz +
+               '\nContact: ' + contact +
+               '\nWhat they need: ' + need +
+               '\nMessage: ' + msg;
+    window.location.href = 'mailto:' + CONTACT_EMAIL +
+      '?subject=' + encodeURIComponent('New free-audit request — ' + (biz || name)) +
+      '&body=' + encodeURIComponent(body);
+    status.style.display = 'block';
+    status.style.color = 'var(--muted)';
+    status.textContent = 'Your email app should be opening — just hit send and it comes straight to me.';
   }
 
   // staggered reveal
